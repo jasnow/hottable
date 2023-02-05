@@ -65,32 +65,33 @@ class BooksController < ApplicationController
   def summarize
     data = @search.result
     total = case params[:calculation]
-            when ""
-            when "nil"
-              data.where(params[:attribute] => nil).size
-            when "not_nil"
-              data.where.not(params[:attribute] => nil).size
-            when "unique"
-              data.select(params[:attribute]).distinct.reorder(nil).size
-            when "min"
-              data.select(params[:attribute]).minimum(params[:attribute])
-            when "max"
-              data.select(params[:attribute]).maximum(params[:attribute])
-            when "avg"
-              data.select(params[:attribute]).average(params[:attribute]).round(2)
-            when "sum"
-              data.select(params[:attribute]).sum(params[:attribute])
-            when "earliest"
-              data.select(params[:attribute]).reorder(params[:attribute] => :asc).limit(1).pluck(params[:attribute]).first
-            when "latest"
-              data.select(params[:attribute]).reorder(params[:attribute] => :desc).limit(1).pluck(params[:attribute]).first
-            end
+    when ""
+      0
+    when "nil"
+      data.where(params[:attribute] => nil).size
+    when "not_nil"
+      data.where.not(params[:attribute] => nil).size
+    when "unique"
+      data.select(params[:attribute]).distinct.reorder(nil).size
+    when "min"
+      data.select(params[:attribute]).minimum(params[:attribute])
+    when "max"
+      data.select(params[:attribute]).maximum(params[:attribute])
+    when "avg"
+      data.select(params[:attribute]).average(params[:attribute]).round(2)
+    when "sum"
+      data.select(params[:attribute]).sum(params[:attribute])
+    when "earliest"
+      data.select(params[:attribute]).reorder(params[:attribute] => :asc).limit(1).pluck(params[:attribute]).first
+    when "latest"
+      data.select(params[:attribute]).reorder(params[:attribute] => :desc).limit(1).pluck(params[:attribute]).first
+    end
 
     render turbo_stream: turbo_stream.replace([params[:attribute], "summary"].join("_")) {
       Views::Table::ColumnSummary.new(
         total,
         attribute: params[:attribute],
-        calculation: params[:calculation],
+        calculation: params[:calculation]
       ).call(view_context:).html_safe
     }
   end
@@ -111,10 +112,10 @@ class BooksController < ApplicationController
   def set_data
     @search = ransack_search
     @result = begin
-      _result = @search.result
-      _result = _result.reorder(@search.batch.attr_name => @search.batch.dir) if @search.batch
+      temp_result = @search.result
+      temp_result = temp_result.reorder(@search.batch.attr_name => @search.batch.dir) if @search.batch
 
-      _result
+      temp_result
     end
     @pagy, @records = pagy(@result, items: page_items)
   end
@@ -130,16 +131,16 @@ class BooksController < ApplicationController
       :ratings_count,
       :text_reviews_count,
       :published_on,
-      :publisher,
+      :publisher
     )
   end
 
   def ransack_search
     @_search ||= begin
-      _search = Book.order(id: :asc).ransack(search_params)
-      _search.default_fields = Book.ransortable_attributes
+      temp_search = Book.order(id: :asc).ransack(search_params)
+      temp_search.default_fields = Book.ransortable_attributes
 
-      _search
+      temp_search
     end
   end
 

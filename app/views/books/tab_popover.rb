@@ -41,12 +41,14 @@ module Views
     def popover_portal_attributes
       {
         class: "divide-y divide-gray-100 rounded-md bg-white border-2 shadow-lg drop-shadow-lg focus:outline-none w-64 group",
-        aria: { orientation: "vertical" },
+        aria: {orientation: "vertical"}
       }
     end
 
     def current_page? = params.dig(:views, :name) == @view.name
+
     def active? = !!@active
+
     def inactive? = !@active
   end
 end

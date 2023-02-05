@@ -17,14 +17,14 @@ module Views
 
           link rel: "stylesheet",
             href: stylesheet_path("application"),
-            data: { turbo_track: "reload" }
+            data: {turbo_track: "reload"}
 
           link rel: "stylesheet",
             href: "https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css"
 
           script type: "text/javascript",
             src: javascript_path("application"),
-            data: { turbo_track: "reload" },
+            data: {turbo_track: "reload"},
             defer: "defer"
         end
 

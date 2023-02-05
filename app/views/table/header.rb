@@ -34,7 +34,7 @@ module Views
       def header_attributes
         {
           scope: :col,
-          style: "width: #{attribute_schema[:width] || 'initial'}",
+          style: "width: #{attribute_schema[:width] || "initial"}",
           class: tokens(
             "sticky top-0 z-20 whitespace-nowrap p-0 text-left text-sm font-semibold text-gray-900 space-x-1",
             conditionless?: "bg-gray-50",
@@ -44,8 +44,8 @@ module Views
             primary_attribute?: "left-[calc(3rem+1px)] z-30"
           ),
           aria: {
-            sort: sorted? && (@search.sorts.find { |sort| sort.attr_name == @attribute }.dir + 'ending')
-          },
+            sort: sorted? && (@search.sorts.find { |sort| sort.attr_name == @attribute }.dir + "ending")
+          }
         }
       end
 
@@ -54,20 +54,20 @@ module Views
           align: :start,
           class: "inline-block text-left w-full h-full",
           data: {
-            details_set_target: "child",
-          },
+            details_set_target: "child"
+          }
         }
       end
 
       def popover_trigger_attributes
         {
-          class: "p-2 flex items-center gap-2",
+          class: "p-2 flex items-center gap-2"
         }
       end
 
       def popover_portal_attributes
         {
-          class: "overflow-auto max-h-[calc(100vh-250px)] origin-top-right",
+          class: "overflow-auto max-h-[calc(100vh-250px)] origin-top-right"
         }
       end
 
@@ -81,11 +81,13 @@ module Views
       end
 
       def sort_index = @search.sorts.index { |sort| sort.attr_name == @attribute } + 1
+
       def sort_index_indicator
         span(class: "bg-orange-400 h-5 w-5 p-1 text-xs text-center leading-none rounded-full z-50", id: "SortPriorityColTitle", aria_hidden: "true") { sort_index.to_s }
       end
 
       def sort_dir = @search.sorts.find { |sort| sort.attr_name == @attribute }.dir
+
       def sort_dir_indicator
         if sort_dir == "asc"
           svg class: "h-3 w-3 text-orange-500 order-first", viewBox: "0 0 425 233.7", fill: "currentColor", focusable: "false", aria_hidden: "true" do
@@ -102,7 +104,7 @@ module Views
         {
           url: search_and_sort_path(:asc),
           text: "Sort #{attribute_schema[:sort][:asc]}",
-          icon: ["sort", attribute_schema[:sort][:icon], "down"].compact.join("-"),
+          icon: ["sort", attribute_schema[:sort][:icon], "down"].compact.join("-")
         }
       end
 
@@ -110,7 +112,7 @@ module Views
         {
           url: search_and_sort_path(:desc),
           text: "Sort #{attribute_schema[:sort][:desc]}",
-          icon: ["sort", attribute_schema[:sort][:icon], "down-alt"].compact.join("-"),
+          icon: ["sort", attribute_schema[:sort][:icon], "down-alt"].compact.join("-")
         }
       end
 
@@ -118,7 +120,7 @@ module Views
         {
           url: search_and_batch_path,
           text: "Group by this field",
-          icon: "card-list",
+          icon: "card-list"
         }
       end
 
@@ -126,16 +128,22 @@ module Views
         {
           url: search_and_fields_path,
           text: "Hide field",
-          icon: "eye-slash",
+          icon: "eye-slash"
         }
       end
 
       def filtered? = @search.condition_attributes.include? @attribute
+
       def sorted? = @search.sort_attributes.include? @attribute
+
       def grouped? = @search.batch_attribute == @attribute
+
       def conditionless? = !filtered? && !sorted? && !grouped?
+
       def primary_attribute? = Book.primary_attribute.to_s == @attribute.to_s
+
       def attribute_schema = Book.attribute_schema.fetch(@attribute.to_sym)
+
       def search_params = params.to_unsafe_hash[@search.context.search_key].presence || {}
 
       def attribute_icon

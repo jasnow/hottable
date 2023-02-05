@@ -1,13 +1,10 @@
 class MenuItemComponent < ApplicationComponent
   class Struct < ApplicationComponent::Struct
-    def initialize()
-    end
-
     def base
       {
         role: :menuitem,
         class: "group<menuitem> cursor-pointer text-gray-700 flex items-center px-4 py-2 space-x-2 hover:bg-gray-200",
-        tabindex: -1,
+        tabindex: -1
       }
     end
   end
@@ -32,12 +29,12 @@ class MenuItemComponent < ApplicationComponent
   end
 
   def struct
-    self.class.struct()
+    self.class.struct
   end
 
   private
 
   def menuitem_attributes
-    attributify(struct.base, { href: @url }, @attributes)
+    attributify(struct.base, {href: @url}, @attributes)
   end
 end

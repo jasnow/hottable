@@ -1,14 +1,11 @@
 class MenuComponent < ApplicationComponent
   class Struct < ApplicationComponent::Struct
-    def initialize()
-    end
-
     def root
       {
         role: :menu,
         class: tokens(
-          "z-40 group<menu>",
-        ),
+          "z-40 group<menu>"
+        )
       }
     end
 
@@ -19,7 +16,7 @@ class MenuComponent < ApplicationComponent
     def portal
       {
         class: "divide-y divide-gray-100 rounded-md bg-white border-2 shadow-lg drop-shadow-lg focus:outline-none w-64 group",
-        aria: { orientation: "vertical" },
+        aria: {orientation: "vertical"}
       }
     end
   end
@@ -56,7 +53,7 @@ class MenuComponent < ApplicationComponent
   end
 
   def struct
-    self.class.struct()
+    self.class.struct
   end
 
   private

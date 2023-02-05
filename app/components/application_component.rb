@@ -17,7 +17,7 @@ class ApplicationComponent < Phlex::HTML
         when Symbol then next unless send(condition)
         when Proc then next unless condition.call
         else raise ArgumentError,
-                    "The class condition must be a Symbol or a Proc."
+          "The class condition must be a Symbol or a Proc."
         end
 
         case token
@@ -25,7 +25,7 @@ class ApplicationComponent < Phlex::HTML
         when String then tokens << token
         when Array then tokens.concat(t)
         else raise ArgumentError,
-                    "Conditional classes must be Symbols, Strings, or Arrays of Symbols or Strings."
+          "Conditional classes must be Symbols, Strings, or Arrays of Symbols or Strings."
         end
       end
 
@@ -41,23 +41,23 @@ class ApplicationComponent < Phlex::HTML
         next newval unless ["class", "data-controller", "data-action"].include?(attribute)
         next newval if attribute.end_with?("!")
 
-        [oldval, newval].uniq.join(' ')
+        [oldval, newval].uniq.join(" ")
       end
     end
   end
 
   def flatten_attributes_hash(input, keys = [], output = {})
-    return output.merge!(keys.join('-') => input) unless input.is_a?(Hash)
+    return output.merge!(keys.join("-") => input) unless input.is_a?(Hash)
 
     input.each do |key, value|
       name = case key
-        when String
-          key
-        when Symbol
-          key.name.tr("_", "-")
-        else
-          key.to_s
-        end
+      when String
+        key
+      when Symbol
+        key.name.tr("_", "-")
+      else
+        key.to_s
+      end
 
       flatten_attributes_hash(
         value,

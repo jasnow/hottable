@@ -38,7 +38,7 @@ class ViewsController < ApplicationController
   def create_view_params
     params.require(:views).permit(:id, :name)
   end
-  
+
   def update_view_params
     view_params = params.require(:views).to_unsafe_hash
     view_params.fetch(params[:id], {})

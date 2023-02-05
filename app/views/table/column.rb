@@ -18,7 +18,7 @@ module Views
         "bg-purple-300 text-purple-800",
         "bg-fuschia-300 text-fuschia-800",
         "bg-pink-300 text-pink-800",
-        "bg-rose-300 text-rose-800",
+        "bg-rose-300 text-rose-800"
       ]
       include ActionView::Helpers::NumberHelper
 
@@ -38,41 +38,41 @@ module Views
         if @attribute.to_s == Book.primary_attribute.to_s
           th(scope: "row",
              **classes("cursor-pointer text-sm font-medium text-gray-900 text-left sticky left-[calc(3rem+1px)] row-group-has-checked:text-blue-900",
-                 filtered?: "bg-green-100 row-group-hover:bg-gray-green-100-mixed row-group-has-checked:bg-blue-green-100-mixed",
-                 sorted?: "bg-orange-100 row-group-hover:bg-gray-orange-100-mixed row-group-has-checked:bg-blue-orange-100-mixed",
-                 grouped?: "bg-purple-100 row-group-hover:bg-gray-purple-100-mixed row-group-has-checked:bg-blue-purple-100-mixed",
-                 -> { !filtered? && !sorted? && !grouped? } => "bg-white",
-                 -> { [:numeric, :decimal].include? attribute_type } => "text-right",
-                 -> { attribute_type == :enum } => "text-center"),
-                id: dom_id(@record, "column_#{@attribute}"),
-                data: {
-                  id: @record.id,
-                  controller: "column",
-                  action: self.class == Views::Table::Column ? "dblclick->column#edit" : "",
-                  attribute: @attribute,
-                  attribute_type: attribute_type,
-                  edit_url: edit_book_path(@record),
-                },
-                style: "max-width: #{attribute_schema.fetch(:width, "initial")}") do
+               :filtered? => "bg-green-100 row-group-hover:bg-gray-green-100-mixed row-group-has-checked:bg-blue-green-100-mixed",
+               :sorted? => "bg-orange-100 row-group-hover:bg-gray-orange-100-mixed row-group-has-checked:bg-blue-orange-100-mixed",
+               :grouped? => "bg-purple-100 row-group-hover:bg-gray-purple-100-mixed row-group-has-checked:bg-blue-purple-100-mixed",
+               -> { !filtered? && !sorted? && !grouped? } => "bg-white",
+               -> { [:numeric, :decimal].include? attribute_type } => "text-right",
+               -> { attribute_type == :enum } => "text-center"),
+            id: dom_id(@record, "column_#{@attribute}"),
+            data: {
+              id: @record.id,
+              controller: "column",
+              action: instance_of?(Views::Table::Column) ? "dblclick->column#edit" : "",
+              attribute: @attribute,
+              attribute_type: attribute_type,
+              edit_url: edit_book_path(@record)
+            },
+            style: "max-width: #{attribute_schema.fetch(:width, "initial")}") do
             body
           end
         else
           td(**classes("text-sm text-gray-500 cursor-pointer whitespace-nowrap text-ellipsis overflow-hidden",
-                filtered?: "bg-green-100 row-group-hover:bg-gray-green-100-mixed row-group-has-checked:bg-green-100/50",
-                sorted?: "bg-orange-100 row-group-hover:bg-gray-orange-100-mixed row-group-has-checked:bg-orange-100/50",
-                grouped?: "bg-purple-100 row-group-hover:bg-gray-purple-100-mixed row-group-has-checked:bg-purple-100/50",
-                -> { [:numeric, :decimal].include? attribute_type } => "text-right",
-                -> { attribute_type == :enum } => "text-center"),
-                id: dom_id(@record, "column_#{@attribute}"),
-                data: {
-                  id: @record.id,
-                  controller: "column",
-                  action: self.class == Views::Table::Column ? "dblclick->column#edit" : "",
-                  attribute: @attribute,
-                  attribute_type: attribute_type,
-                  edit_url: edit_book_path(@record),
-                },
-                style: "max-width: #{attribute_schema.fetch(:width, "initial")}") do
+            :filtered? => "bg-green-100 row-group-hover:bg-gray-green-100-mixed row-group-has-checked:bg-green-100/50",
+            :sorted? => "bg-orange-100 row-group-hover:bg-gray-orange-100-mixed row-group-has-checked:bg-orange-100/50",
+            :grouped? => "bg-purple-100 row-group-hover:bg-gray-purple-100-mixed row-group-has-checked:bg-purple-100/50",
+            -> { [:numeric, :decimal].include? attribute_type } => "text-right",
+            -> { attribute_type == :enum } => "text-center"),
+            id: dom_id(@record, "column_#{@attribute}"),
+            data: {
+              id: @record.id,
+              controller: "column",
+              action: instance_of?(Views::Table::Column) ? "dblclick->column#edit" : "",
+              attribute: @attribute,
+              attribute_type: attribute_type,
+              edit_url: edit_book_path(@record)
+            },
+            style: "max-width: #{attribute_schema.fetch(:width, "initial")}") do
             body
           end
         end
@@ -86,15 +86,19 @@ module Views
       end
 
       def filtered? = @search.condition_attributes.include? @attribute
+
       def sorted? = @search.sort_attributes.include? @attribute
+
       def grouped? = @search.batch_attribute == @attribute
+
       def attribute_schema = Book.attribute_schema.fetch(@attribute.to_sym)
+
       def attribute_type = attribute_schema[:type]
 
       def value = @record.public_send(@attribute).to_s
 
       def tailwind_color_for_enum
-        index = (Digest::MD5.hexdigest(value).to_i(16) % COLORS.size) - 1
+        index = (Digest::SHA256.hexdigest(value).to_i(16) % COLORS.size) - 1
         COLORS[index]
       end
     end

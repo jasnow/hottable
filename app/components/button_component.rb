@@ -9,14 +9,15 @@ class ButtonComponent < ApplicationComponent
         class: tokens(
           "cursor-pointer inline-flex items-center rounded-md border border-transparent px-2.5 py-1.5 text-base font-medium gap-2",
           primary?: "bg-blue-500 hover:bg-blue-400 text-white",
-          secondary?: "bg-gray-200 hover:bg-gray-300 text-gray-900",
-        ),
+          secondary?: "bg-gray-200 hover:bg-gray-300 text-gray-900"
+        )
       }
     end
 
     private
 
     def primary? = @type == :primary
+
     def secondary? = @type == :secondary
   end
 
@@ -33,7 +34,7 @@ class ButtonComponent < ApplicationComponent
   end
 
   def template(&block)
-    if block_given?
+    if block
       public_send(@element, **button_attributes, &block)
     else
       public_send(@element, **button_attributes) do

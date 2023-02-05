@@ -4,11 +4,13 @@ class PopoverComponent < ApplicationComponent
       super("`#{side.inspect}` must be one of `:top`, `:bottom`, `:left`, or `:right`")
     end
   end
+
   class InvalidAlign < StandardError
     def initialize(align)
       super("`#{align.inspect}` must be one of `:start`, `:center`, or `:end`")
     end
   end
+
   class InvalidRole < StandardError
     def initialize(role)
       super("`#{role.inspect}` must be one of `:menu`, `:listbox`, `:tree`, `:grid`, or `:dialog`")
@@ -26,7 +28,7 @@ class PopoverComponent < ApplicationComponent
     def root
       {
         class: "relative group",
-        data: { controller: "details-popover" }
+        data: {controller: "details-popover"}
       }
     end
 
@@ -36,12 +38,12 @@ class PopoverComponent < ApplicationComponent
         aria: {
           expanded: "false",
           haspopup: @role,
-          controls: @popover_id,
+          controls: @popover_id
         },
         data: {
           action: "click@window->details-popover#hide touchend@window->details-popover#hide",
-          details_popover_target: "button",
-        },
+          details_popover_target: "button"
+        }
       }
     end
 
@@ -52,7 +54,7 @@ class PopoverComponent < ApplicationComponent
         tabindex: -1,
         data: {
           side: @side,
-          align: @align,
+          align: @align
         },
         class: tokens(
           "absolute z-40",
@@ -65,27 +67,41 @@ class PopoverComponent < ApplicationComponent
           side_right?: "left-full ml-1",
           horizontal_start?: "top-0",
           horizontal_center?: "top-1/2 -translate-y-1/2",
-          horizontal_end?: "bottom-0 ",
-        ),
+          horizontal_end?: "bottom-0 "
+        )
       }
     end
 
     private
 
     def side_top? = @side == :top
+
     def side_bottom? = @side == :bottom
+
     def side_left? = @side == :left
+
     def side_right? = @side == :right
+
     def align_start? = @align == :start
+
     def align_center? = @align == :center
+
     def align_end? = @align == :end
+
     def side_vertical? = side_top? || side_bottom?
+
     def side_horizontal? = side_left? || side_right?
+
     def vertical_start? = side_vertical? && align_start?
+
     def vertical_center? = side_vertical? && align_center?
+
     def vertical_end? = side_vertical? && align_end?
+
     def horizontal_start? = side_horizontal? && align_start?
+
     def horizontal_center? = side_horizontal? && align_center?
+
     def horizontal_end? = side_horizontal? && align_end?
   end
 
@@ -129,7 +145,7 @@ class PopoverComponent < ApplicationComponent
   private
 
   def trigger_icon(passed_icon = nil)
-    icon_name = passed_icon == true ? "chevron-#{trigger_icon_direction}" : passed_icon
+    icon_name = (passed_icon == true) ? "chevron-#{trigger_icon_direction}" : passed_icon
 
     Bootstrap::IconComponent.new(
       icon_name,

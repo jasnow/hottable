@@ -8,7 +8,7 @@ module Views
     end
 
     def template
-      table class: "h-full border-r border-gray-300", id: 'table' do
+      table class: "h-full border-r border-gray-300", id: "table" do
         caption id: "booksTableCaption", class: "h-0 overflow-hidden" do
           i class: "bi-table", aria_hidden: "true"
           "Main View"
@@ -17,7 +17,7 @@ module Views
         render Views::Table::Head.new(search: @search)
 
         if @search.batch_attribute.present?
-          group_counts = @result.reorder('').group(@search.batch_attribute).order("books_#{@search.batch_attribute}" => :desc).count
+          group_counts = @result.reorder("").group(@search.batch_attribute).order("books_#{@search.batch_attribute}" => :desc).count
           groups = @records.reorder(@search.batch.attr_name => @search.batch.dir).group_by(& @search.batch_attribute.to_sym)
           groups.each do |group_name, group_records|
             tbody class: "bg-white", data_controller: "groupable" do
@@ -29,7 +29,7 @@ module Views
             end
           end
           tbody class: "bg-white" do
-            tr aria_hidden: "true", class: "bg-violet-100 h-full", style: tokens(-> {!@search.batch.expanded} => "height: calc(100vh - 313px - (59px * #{groups.count}));") do
+            tr aria_hidden: "true", class: "bg-violet-100 h-full", style: tokens(-> { !@search.batch.expanded } => "height: calc(100vh - 313px - (59px * #{groups.count}));") do
               td colspan: attributes.size + 1, class: "p-0 bg-none"
             end
           end

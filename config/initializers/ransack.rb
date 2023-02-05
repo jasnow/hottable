@@ -5,14 +5,14 @@ module Ransack
 
       def build(params)
         params.with_indifferent_access.each do |key, value|
-          send("#{key}=", value) if key.match(/^(name|dir|ransacker_args|expanded)$/)
+          send("#{key}=", value) if /^(name|dir|ransacker_args|expanded)$/.match?(key)
         end
 
         self
       end
 
       def expanded=(value)
-        @expanded = value == 'true' ? true : false
+        @expanded = value == "true"
       end
     end
   end
@@ -20,11 +20,11 @@ module Ransack
   class Search
     def build(params)
       collapse_multiparameter_attributes!(recursive_compact(params)).each do |key, value|
-        if key == 's' || key == 'sorts'
+        if key == "s" || key == "sorts"
           send(:sorts=, value)
-        elsif key == 'f' || key == 'fields'
+        elsif key == "f" || key == "fields"
           send(:fields=, value)
-        elsif key == 'b' || key == 'batch'
+        elsif key == "b" || key == "batch"
           next if value["name"].blank? && value["dir"].blank?
 
           send(:batch=, value)
@@ -83,9 +83,9 @@ module Ransack
       args.each do |field|
         case field
         when Hash
-          field = Nodes::Attribute.new(@context, field['name'])
+          field = Nodes::Attribute.new(@context, field["name"])
         when String
-          next if field == ''
+          next if field == ""
           field = Nodes::Attribute.new(@context, field)
         end
 
@@ -137,7 +137,7 @@ module Ransack
       p = proc do |*args|
         v = args.last
         v.delete_if(&p) if v.respond_to? :delete_if
-        v.nil? || v.respond_to?(:"empty?") && v.empty?
+        v.nil? || v.respond_to?(:empty?) && v.empty?
       end
 
       hash_or_array.delete_if(&p)

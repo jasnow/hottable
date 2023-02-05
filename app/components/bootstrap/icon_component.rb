@@ -7,7 +7,7 @@ module Bootstrap
     end
 
     def template
-      i **attributify(icon_attributes, @attributes)
+      i(**attributify(icon_attributes, @attributes))
     end
 
     private
@@ -16,8 +16,8 @@ module Bootstrap
       {
         class: "bi-#{@name}",
         aria: {
-          hidden: @decorative,
-        },
+          hidden: @decorative
+        }
       }
     end
   end
