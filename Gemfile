@@ -62,6 +62,8 @@ group :development, :test do
   gem "debug", platforms: %i[mri mingw x64_mingw]
 
   gem "standard"
+  gem "ruby_audit"
+  gem "spektr"
 end
 
 group :development do

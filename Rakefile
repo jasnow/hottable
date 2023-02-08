@@ -6,5 +6,5 @@ require_relative "config/application"
 Rails.application.load_tasks
 
 task :default do
-  puts "FYI: No tests for this repo."
+  bundle exec rails test #puts "FYI: No tests for this repo."
 end
