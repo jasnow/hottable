@@ -127,13 +127,13 @@ GEM
       ast (~> 2.4.1)
     pastel (0.8.0)
       tty-color (~> 0.5)
-    phlex (1.3.2)
+    phlex (1.4.0)
       concurrent-ruby (~> 1.2)
       zeitwerk (~> 2.6)
-    phlex-rails (0.6.1)
-      phlex (>= 1.3.1, < 2)
+    phlex-rails (0.7.0)
+      phlex (~> 1.4)
       rails (>= 6.1, < 8)
-      zeitwerk (~> 2)
+      zeitwerk (~> 2.6)
     propshaft (0.6.4)
       actionpack (>= 7.0.0)
       activesupport (>= 7.0.0)
@@ -219,6 +219,8 @@ GEM
       tty-spinner
       tty-table
       zeitwerk (>= 2.6)
+    sqlite3 (1.6.0-x86_64-darwin)
+    sqlite3 (1.6.0-x86_64-linux)
     standard (1.24.3)
       language_server-protocol (~> 3.17.0.2)
       rubocop (= 1.44.1)
@@ -282,6 +284,7 @@ DEPENDENCIES
   redis
   ruby_audit
   spektr
+  sqlite3
   standard
   stimulus-rails
   turbo-rails
