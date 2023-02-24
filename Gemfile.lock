@@ -129,7 +129,7 @@ GEM
     phlex (1.4.0)
       concurrent-ruby (~> 1.2)
       zeitwerk (~> 2.6)
-    phlex-rails (0.7.0)
+    phlex-rails (0.7.1)
       phlex (~> 1.4)
       rails (>= 6.1, < 8)
       zeitwerk (~> 2.6)
