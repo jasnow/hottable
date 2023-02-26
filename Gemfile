@@ -62,6 +62,7 @@ group :development, :test do
   gem "standard"
   gem "ruby_audit"
   gem "spektr"
+  gem 'simplecov'
 end
 
 group :development do
