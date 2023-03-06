@@ -33,6 +33,9 @@
 /app/assets/builds/*
 !/app/assets/builds/.keep
 
-/node_modules
 .DS_Store
+
+coverage
+/node_modules
+sandworm/
 coverage
