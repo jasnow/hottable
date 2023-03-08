@@ -126,7 +126,7 @@ GEM
       racc (~> 1.4)
     pagy (6.0.2)
     parallel (1.22.1)
-    parser (3.2.1.0)
+    parser (3.2.1.1)
       ast (~> 2.4.1)
     pastel (0.8.0)
       tty-color (~> 0.5)
@@ -306,4 +306,4 @@ RUBY VERSION
    ruby 3.2.1p31
 
 BUNDLED WITH
-   2.4.7
+   2.4.8
