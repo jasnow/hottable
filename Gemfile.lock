@@ -122,7 +122,7 @@ GEM
     net-smtp (0.3.3)
       net-protocol
     nio4r (2.5.9)
-    nokogiri (1.15.1)
+    nokogiri (1.15.2)
       mini_portile2 (~> 2.8.2)
       racc (~> 1.4)
     pagy (6.0.4)
@@ -232,7 +232,7 @@ GEM
       zeitwerk (>= 2.6)
     sqlite3 (1.6.3)
       mini_portile2 (~> 2.8.0)
-    standard (1.28.2)
+    standard (1.28.3)
       language_server-protocol (~> 3.17.0.2)
       lint_roller (~> 1.0)
       rubocop (~> 1.50.2)
