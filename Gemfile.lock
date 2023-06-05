@@ -91,7 +91,7 @@ GEM
       temple (>= 0.8.2)
       thor
       tilt
-    i18n (1.14.0)
+    i18n (1.14.1)
       concurrent-ruby (~> 1.0)
     jsbundling-rails (1.1.1)
       railties (>= 6.0.0)
@@ -239,7 +239,7 @@ GEM
       rubocop (~> 1.52.0)
       standard-custom (~> 1.0.0)
       standard-performance (~> 1.1.0)
-    standard-custom (1.0.0)
+    standard-custom (1.0.1)
       lint_roller (~> 1.0)
     standard-performance (1.1.0)
       lint_roller (~> 1.0)
@@ -253,7 +253,7 @@ GEM
     strings-ansi (0.2.0)
     temple (0.10.2)
     thor (1.2.2)
-    tilt (2.1.0)
+    tilt (2.2.0)
     timeout (0.3.2)
     tty-color (0.6.0)
     tty-cursor (0.7.1)
