@@ -108,7 +108,7 @@ GEM
       net-smtp
     marcel (1.0.2)
     method_source (1.0.0)
-    mini_mime (1.1.2)
+    mini_mime (1.1.5)
     mini_portile2 (2.8.4)
     minitest (5.19.0)
     msgpack (1.7.2)
@@ -185,7 +185,7 @@ GEM
       activerecord (>= 6.1.5)
       activesupport (>= 6.1.5)
       i18n
-    redis (5.0.6)
+    redis (5.0.7)
       redis-client (>= 0.9.0)
     redis-client (0.15.0)
       connection_pool
