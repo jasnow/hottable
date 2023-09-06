@@ -86,7 +86,7 @@ GEM
     erb (4.0.3)
       cgi (>= 0.3.3)
     erubi (1.12.0)
-    globalid (1.2.0)
+    globalid (1.2.1)
       activesupport (>= 6.1)
     haml (6.1.2)
       temple (>= 0.8.2)
@@ -188,7 +188,7 @@ GEM
       i18n
     redis (5.0.7)
       redis-client (>= 0.9.0)
-    redis-client (0.16.0)
+    redis-client (0.17.0)
       connection_pool
     regexp_parser (2.8.1)
     rexml (3.2.6)
@@ -281,7 +281,7 @@ GEM
       concurrent-ruby (~> 1.0)
     unicode-display_width (2.4.2)
     unicode_utils (1.4.0)
-    web-console (4.2.0)
+    web-console (4.2.1)
       actionview (>= 6.0.0)
       activemodel (>= 6.0.0)
       bindex (>= 0.4.0)
