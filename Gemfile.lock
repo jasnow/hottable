@@ -139,8 +139,20 @@ GEM
     net-smtp (0.4.0)
       net-protocol
     nio4r (2.7.0)
-    nokogiri (1.15.5)
+    nokogiri (1.16.0)
       mini_portile2 (~> 2.8.2)
+      racc (~> 1.4)
+    nokogiri (1.16.0-aarch64-linux)
+      racc (~> 1.4)
+    nokogiri (1.16.0-arm-linux)
+      racc (~> 1.4)
+    nokogiri (1.16.0-arm64-darwin)
+      racc (~> 1.4)
+    nokogiri (1.16.0-x86-linux)
+      racc (~> 1.4)
+    nokogiri (1.16.0-x86_64-darwin)
+      racc (~> 1.4)
+    nokogiri (1.16.0-x86_64-linux)
       racc (~> 1.4)
     pagy (6.2.0)
     parallel (1.24.0)
@@ -264,8 +276,14 @@ GEM
       tty-spinner
       tty-table
       zeitwerk (>= 2.6)
-    sqlite3 (1.6.9)
+    sqlite3 (1.7.0)
       mini_portile2 (~> 2.8.0)
+    sqlite3 (1.7.0-aarch64-linux)
+    sqlite3 (1.7.0-arm-linux)
+    sqlite3 (1.7.0-arm64-darwin)
+    sqlite3 (1.7.0-x86-linux)
+    sqlite3 (1.7.0-x86_64-darwin)
+    sqlite3 (1.7.0-x86_64-linux)
     standard (1.33.0)
       language_server-protocol (~> 3.17.0.2)
       lint_roller (~> 1.0)
@@ -322,7 +340,12 @@ GEM
     zeitwerk (2.6.12)
 
 PLATFORMS
+  aarch64-linux
+  arm-linux
+  arm64-darwin
   ruby
+  x86-linux
+  x86_64-darwin
   x86_64-darwin-16
   x86_64-linux
 
