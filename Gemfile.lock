@@ -121,7 +121,7 @@ GEM
       net-smtp
     marcel (1.0.4)
     mini_mime (1.1.5)
-    mini_portile2 (2.8.5)
+    mini_portile2 (2.8.6)
     minitest (5.22.3)
     msgpack (1.7.2)
     mutex_m (0.2.0)
@@ -150,14 +150,14 @@ GEM
       racc (~> 1.4)
     nokogiri (1.16.4-x86_64-linux)
       racc (~> 1.4)
-    pagy (8.1.2)
+    pagy (8.2.2)
     parallel (1.24.0)
     parser (3.3.0.5)
       ast (~> 2.4.1)
       racc
     pastel (0.8.0)
       tty-color (~> 0.5)
-    phlex (1.10.0)
+    phlex (1.10.1)
     phlex-rails (1.2.1)
       phlex (~> 1.10.0)
       railties (>= 6.1, < 8)
@@ -216,12 +216,12 @@ GEM
       i18n
     rdoc (6.6.3.1)
       psych (>= 4.0.0)
-    redis (5.1.0)
-      redis-client (>= 0.17.0)
-    redis-client (0.22.0)
+    redis (5.2.0)
+      redis-client (>= 0.22.0)
+    redis-client (0.22.1)
       connection_pool
     regexp_parser (2.9.0)
-    reline (0.5.1)
+    reline (0.5.2)
       io-console (~> 0.5)
     rexml (3.2.6)
     rubocop (1.62.1)
@@ -355,7 +355,7 @@ DEPENDENCIES
   ruby_audit
   simplecov
   spektr
-  sqlite3
+  sqlite3 (~> 1.4)
   standard
   stimulus-rails
   turbo-rails
