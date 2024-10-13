@@ -1,1 +1,1 @@
-rvm use 3.3.4@ruby3.4-rails7.2 --create
+rvm use 3.4.0-preview2@ruby3.4-rails7.2 --create
